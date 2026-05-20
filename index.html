@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список дел</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        .wrap {width: 400px;}
+        input {width: 280px;padding: 8px;}
+        button {padding: 8px 15px;}
+        li {margin: 10px 0;display: flex;justify-content: space-between;}
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <h3>Список задач</h3>
+    <input id="textInp" placeholder="Введите задачу">
+    <button id="addBtn">Добавить</button>
+    <ul id="taskBox"></ul>
+</div>
+
+<script>
+let inp = document.getElementById('textInp');
+let addBtn = document.getElementById('addBtn');
+let box = document.getElementById('taskBox');
+
+addBtn.addEventListener('click',function(){
+    let text = inp.value.trim();
+    if(!text) return;
+    let li = document.createElement('li');
+    li.innerText = text;
+    let delBtn = document.createElement('button');
+    delBtn.innerText = 'Удалить';
+    delBtn.onclick = ()=>li.remove();
+    li.appendChild(delBtn);
+    box.appendChild(li);
+    inp.value = '';
+})
+</script>
+</body>
+</html>
